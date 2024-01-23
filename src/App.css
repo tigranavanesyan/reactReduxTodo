@@ -1,38 +1,249 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color: black;
+  padding: 0 10px;
+}
 .App {
+  margin: 30px auto;
+  max-width: 400px;
+  border-radius: 5px;
+  background-color: silver;
+  padding: 15px 5px;
+  position: relative;
+
+}
+.App h1{
   text-align: center;
+  margin-bottom: 20px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.block{
+  position: absolute;
+  left: 0;
+  top: 120px;
+  width: 100%;
+  height: 80%;
+  backdrop-filter: blur(1.5px);
+  z-index: 1000;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form{
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+form input{
+  flex-grow: 1;
+  padding: 3px 5px;
+  outline: none;
+}
+.form-btns{
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+}
+.form-btns span{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 115px;
+  height: 100%;
+}
+.form-btns>button{
+  width: 115px;
+}
+.form-btns button{
+  height: 100%;
+}
+button{
+  padding: 2px 5px;
+}
+.todo-item{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid wheat;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  background-color: silver;
+}
+.todo-item input{
+  width: 20px;
+  height: 20px;
+}
+.todo-item .text{
+  width: 100%;
+  text-align: left;
+  padding: 5px 10px;
+}
+.todo-item.checked .text{
+  text-decoration: line-through;
+  color: black;
+}
+.update-delete{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  gap: 5px;
+  position: relative;
+}
+.update-delete span{
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 20px;
+  height: 20px;
+}
+*[tooltip]:hover:after {
+  position: absolute;
+  content: attr(tooltip);
+  top: -20px;
+  right: 0;
+  border-radius: 5px;
+  background-color: rgb(200,250,200);
+  padding: 0 5px;
+  font-size: 12px;
+  width: auto;
+}
+.todo-footer{
+  margin-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tab-search-filter{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+}
+.search-filter{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.tabs{
+  display: flex;
+  gap: 10px;
+}
+.tabs span{
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0 5px 2px;
+  cursor: pointer;
+}
+.clicked{
+  background-color: aquamarine;
+}
+.gap{
+  margin-left: 15px;
+}
+.filters{
+  margin-left: auto;
+  display: flex;
+  gap: 5px;
+}
+.filters>div{
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.activeFilter{
+  color: red;
+}
+.search{
+  height: 25px;
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+.search input{
+  border: none;
+  border-radius: 5px;
+  padding: 0 5px;
+  height: 100%;
+  width: 100%;
+  outline: none;
+}
+.search-close{
+  position: absolute;
+  height: 100%;
+  cursor: pointer;
+  right: 0;
+  padding: 0 5px 0 2px;
+  font-size: 20px;
+  line-height: 1;
+  color: red;
+  border: none;
 }
 
-.App-link {
-  color: #61dafb;
+
+
+.item1-enter {
+  transition: all 500ms ease-in;
+  opacity: 0;
+  transform: translateX(-100px);
+}
+.item1-enter-active {
+  transform: translateX(0px);
+  opacity: 1;
+}
+.item1-exit {
+  transform: translateX(-100px);
+  transition: all 500ms ease-in;
+}
+.item1-exit-active {
+  opacity: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 420px) {
+  .tab-search-filter{
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+}
+@media (max-width: 350px) {
+  .App h1{
+    margin-bottom: 5px;
+  }
+  .block{
+    top: 150px;
+    height: 70%;
+  }
+  form{
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .todo-footer{
+    margin-top: 5px;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .block{
+    top: 125px;
+    height: 80%;
+  }
+  .App{
+    margin: 0;
+    padding: 5px;
+  }
+  body{
+    padding: 0;
+    background-color: silver;
+  }
+  .tabs{
+    flex-wrap: wrap;
   }
 }
